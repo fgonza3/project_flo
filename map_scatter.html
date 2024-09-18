@@ -1,0 +1,332 @@
+<html>
+<head>
+<title>Scatter_Creek</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+</head>
+<body>
+    <!--title-->
+    <h1 style="text-align: center;">Scatter Creek Citizen Science, Stream Flow Intermittence</h1>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<div id="mapid" style="width: 1100px; height: 600px;margin: auto;"></div>
+<script>
+var mymap = L.map('mapid',
+{
+center: [46.8620919, -122.9208092],
+zoom: 12
+});
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
+}).addTo(mymap);
+var ScatterC= {"type":"FeatureCollection","features":[{"type":"Feature","properties":{},"geometry":{"coordinates":[[-123.11055896474895,46.80535924265379],[-123.11031032831461,46.80603998393687],[-123.1099025645619,46.806353122034324],[-123.10904725522701,46.80646884652211],[-123.10831129138094,46.80661179995761],[-123.10766483665111,46.80657776345964],[-123.10695870917712,46.80625101198544],[-123.10624263624567,46.806155709098334],[-123.10552656331424,46.805897028982116],[-123.10506907227457,46.805440932062425],[-123.10461158123518,46.80508694372841],[-123.10402143898237,46.804661157752264],[-123.10368461507224,46.8044632968859],[-123.10308230737758,46.80433271788678],[-123.10226311902099,46.803950853116135],[-123.10158159318259,46.80359473758156],[-123.09988713090203,46.80287968898875],[-123.09877860346657,46.8025291848374],[-123.09809326847211,46.8021764550146],[-123.097322213723,46.802105183838734],[-123.0967203291136,46.802400943138736],[-123.09468067577146,46.80355595894909],[-123.09332050654196,46.80340956735466],[-123.09211099757866,46.80311174239827],[-123.09174949754811,46.802954308891486],[-123.09204024905381,46.80280881241754],[-123.091948596942,46.802673835397],[-123.09172040883666,46.802743827373035],[-123.09181873823772,46.80291990302425],[-123.09150732362178,46.80277473356318],[-123.09060516353155,46.80305615973998],[-123.09023594164213,46.80316118775693],[-123.09013681861657,46.803350819157686],[-123.08997937616635,46.80337602517278],[-123.08974252246041,46.80330691910106],[-123.08923182277869,46.80322741047095],[-123.0883137459424,46.803152893667914]],"type":"LineString"}},{"type":"Feature","properties":{},"geometry":{"coordinates":[[-123.08831709508344,46.80315266640227],[-123.08817226139264,46.803127891955654],[-123.08803055634752,46.80302394772855],[-123.08801018913255,46.80292785411757],[-123.08779124507096,46.80281677013366],[-123.08747915280523,46.8027542758291],[-123.08716734299585,46.80283985404287],[-123.08667129163425,46.80279400292915],[-123.0863038461813,46.80276003911516],[-123.08578392330307,46.80245587350964],[-123.08524562815248,46.80215000797372],[-123.08467699042264,46.8025296358679],[-123.0844347912872,46.80304002479977],[-123.08378562547173,46.80322219065539],[-123.08369804589658,46.80366614235231],[-123.08389468270646,46.80410407184172],[-123.08357293221778,46.804300352707116],[-123.0828504707334,46.80413670997686],[-123.08093805720142,46.804864022733085],[-123.07823115501381,46.805195013990186],[-123.07698667434883,46.80564502719557],[-123.07589935024006,46.80625485542819],[-123.07544013392453,46.806123341222786],[-123.0752266323772,46.80599279572672],[-123.07471267702724,46.80601659177202],[-123.07384423469506,46.80625320948121],[-123.07338379640657,46.80670974338386],[-123.07283789791421,46.80677811892281],[-123.07229079705358,46.807028589279014],[-123.07214340320968,46.807482361790704],[-123.07204757378224,46.80761609925074],[-123.07157755090279,46.80765187688476],[-123.07134076637652,46.80798652144577],[-123.07129527988742,46.80833620056123],[-123.07157166150785,46.80860302699412],[-123.07187112399163,46.80887198527839],[-123.07185183506365,46.809207994566464],[-123.07151282511558,46.80937772862728],[-123.07129393777991,46.80983201129396],[-123.07103697483235,46.810121921342414],[-123.07016889031942,46.811424334583734],[-123.06993631546239,46.81212664394599],[-123.07000623329012,46.812486961303506],[-123.06997477194122,46.81276552835641],[-123.06968938045588,46.81306525605763],[-123.06959680587983,46.81347488662402],[-123.06944682351573,46.81375857955351],[-123.06888829424275,46.81432619197648],[-123.06899072952422,46.81523634070044],[-123.06838106079529,46.81589015127926],[-123.06770118818011,46.81635807079314],[-123.06673158404129,46.816984167011725],[-123.06553740045979,46.81785322389328],[-123.06390796848501,46.8183557413939],[-123.06282012872049,46.81903215907087],[-123.06230395822786,46.819479897327994],[-123.06211582226834,46.82018313721832],[-123.06099294730072,46.82020323740434],[-123.05986523531121,46.819997696733395],[-123.05926751709526,46.81978911135087],[-123.05856225688743,46.81985320269757],[-123.05783691003671,46.8197000053745],[-123.05730881147991,46.81982355361629],[-123.05642021984974,46.81954037406328],[-123.05584194330876,46.81938640341133],[-123.0550113540094,46.81955381239146],[-123.05440802709931,46.81952678738077],[-123.05352620826275,46.81984744612254],[-123.0514773058695,46.8202326064885],[-123.05123447203309,46.82061230429787],[-123.05070532192349,46.821166609176686],[-123.05080123994196,46.82185047258574],[-123.0509790818617,46.82275731806919],[-123.0507318100754,46.82326583935412],[-123.05071074912566,46.8240106729634],[-123.05079622360935,46.82445421776421],[-123.05108543955524,46.82475324923766],[-123.05086567784167,46.825362654834464],[-123.05018766407002,46.82552125886434],[-123.05013363984366,46.82629913803777],[-123.04973637544543,46.82755584839518],[-123.04891054662046,46.82821133776332],[-123.04854626847992,46.829300872638214],[-123.04672548317163,46.829830385682726],[-123.04592528135979,46.83034725406213],[-123.04486631322732,46.83041959658294],[-123.04443391861389,46.83071999904257],[-123.04360603737686,46.83088175926778],[-123.04325816081956,46.83125803618816],[-123.0425675756517,46.83122827209871],[-123.04164857910692,46.83134757888129],[-123.04052559932528,46.83161821228066],[-123.03887714875557,46.83228274157639],[-123.03831004204638,46.832383503460335],[-123.0375801223461,46.83248839902723],[-123.03678323705857,46.83208136997095],[-123.03611410321788,46.83250855788771],[-123.03548549465616,46.83289503180029],[-123.03466881346796,46.832752904639676],[-123.03354947332639,46.83282731706032],[-123.03220945826745,46.833525927976325],[-123.03087188491004,46.83322454749268],[-123.02995435726285,46.83342873759145],[-123.0295723951296,46.833882443384255],[-123.02824262518294,46.83387073470766],[-123.02531920423806,46.833867393893144],[-123.02321852051494,46.8341400969332],[-123.02153520164724,46.83427354123796],[-123.02050836512859,46.83418966198818],[-123.02030665912635,46.83424055566053],[-123.01947911445254,46.833998476558605],[-123.01807615378596,46.83365227590889],[-123.01802268199589,46.83307398710707],[-123.01690596113426,46.83288163575631],[-123.0148559592943,46.832794185080616],[-123.01360479722061,46.832716825505514],[-123.0132022010491,46.83126533563873],[-123.01298700362823,46.830875721586295],[-123.01245126249894,46.83054794981183],[-123.01191782108845,46.830318222145564],[-123.01186491195341,46.82973956422819],[-123.0117074032654,46.82951445811952],[-123.01100070664128,46.82934007064355],[-123.00938103449707,46.82871802896594],[-123.00780771821266,46.82890417028855],[-123.00748435403702,46.82888137462433],[-123.0058488850552,46.82901522235977],[-123.0050861701134,46.82908198662699],[-123.00451566275451,46.82942357594743],[-123.00413512432394,46.82983571365668],[-123.00417280594665,46.830195816687876],[-123.00357689321919,46.83090841110797],[-123.0034833027234,46.8311765128465],[-123.00165485189012,46.83203639315346],[-123.00132331802126,46.83213382204997],[-123.00085323302947,46.831834264731015],[-122.9996157559647,46.831988632253115],[-122.99946080813831,46.83239684492227],[-122.998806160356,46.832516613175216],[-122.99795364753447,46.83246066689139],[-122.9976753195714,46.83229587167713],[-122.99748665200535,46.83228049839374],[-122.99739004870877,46.83193563511401],[-122.99652917454839,46.83173392161274],[-122.99621247385437,46.83189849491501],[-122.99558480630532,46.831818992438315],[-122.99504058785857,46.83118539951178],[-122.99380714154125,46.83096156759885],[-122.99302054888975,46.83078997475761],[-122.99243596202433,46.83058395007015],[-122.99151260393202,46.830188921183066],[-122.99112231133972,46.82991430348258],[-122.98969903679179,46.829619902451526],[-122.9890278510552,46.82971255750866],[-122.98775207914176,46.82958450869154],[-122.98026718683414,46.83035784779864],[-122.97544571873357,46.831236181964556],[-122.97482159321453,46.83205495093392],[-122.97482310888715,46.8325256510299],[-122.97514841140497,46.832569221735014],[-122.9748843297269,46.83300055561773],[-122.97259916788573,46.83391264035015],[-122.97171206024679,46.83355290022092],[-122.97022275958643,46.83350571135895],[-122.9685127964938,46.834202500471775],[-122.96798694093253,46.83402160676758],[-122.96726881478293,46.83353325495639],[-122.96670461395635,46.833171540275856],[-122.96552152195301,46.831891762432235],[-122.96544221091935,46.83151374781414],[-122.96547767827683,46.83123262512325],[-122.96528126532795,46.8307878578552],[-122.96529739318424,46.8297374958168],[-122.96527240408662,46.829095996619685],[-122.9645345446238,46.82775874410959],[-122.96398096201074,46.82742847493947],[-122.96385253331553,46.82664005957071],[-122.9628167413437,46.82598986124171],[-122.96242531571318,46.82562772113411],[-122.96119316257456,46.82524674711797],[-122.96040218694947,46.82504025227951],[-122.95960560101528,46.8252634962885],[-122.95690487145995,46.82500469242851],[-122.95566962206846,46.8249653996381],[-122.95393621869135,46.825736547379165],[-122.94944482880308,46.82663771653833],[-122.94034147274074,46.830003394717096],[-122.9395703933067,46.83007241580427],[-122.93903978781432,46.82977437199554],[-122.93590137341928,46.83023338212567],[-122.93528359140313,46.83038996358758],[-122.93344782949008,46.83134414985972],[-122.93060271379886,46.83147958831577],[-122.92631780893699,46.83333744848693],[-122.92378593833021,46.833609597627316],[-122.92241225820729,46.83498463826339],[-122.91905533088132,46.83490072287029],[-122.91690409571802,46.8345528614872],[-122.91282975273936,46.83373972904246],[-122.90945571728369,46.83433763140434],[-122.90910599186047,46.83437452176534],[-122.9087137579555,46.834110440572374],[-122.90859158115444,46.83388903757725],[-122.90833473752576,46.83375862627585],[-122.90825530770925,46.833540235033865],[-122.90800406012654,46.833401350961566],[-122.90737238779835,46.83352233050357],[-122.90698932460134,46.833312089999026],[-122.90632324616753,46.83357546185775],[-122.90606008304421,46.833228855327576],[-122.9060146521818,46.83310633384818],[-122.90570480940242,46.83310378707728],[-122.9055687652733,46.83280864553919],[-122.90523016904437,46.83299701251522],[-122.9040706964074,46.83271848157355],[-122.90309171767632,46.83240250732857],[-122.90205844589842,46.83196731999985],[-122.90188327736914,46.831358062470144],[-122.90104850432172,46.83108116644948],[-122.90035779839883,46.83077353981935],[-122.89987155712589,46.83051030721933],[-122.89932362326871,46.830736071416936],[-122.89899177046468,46.830426482785384],[-122.89846130862756,46.830354164521395],[-122.89763910013718,46.829984133771774],[-122.89563319744364,46.82920180346602],[-122.89431743679316,46.829015090363754],[-122.89386847848972,46.82877203344475],[-122.89285493732598,46.82842660410569],[-122.89204554478567,46.82831669409774],[-122.89165870104145,46.828281292176115],[-122.890858498173,46.82862329624396],[-122.88968649449313,46.82831707457541],[-122.88909674656216,46.828682045454514],[-122.88829669001518,46.8285890559186],[-122.88705476883067,46.82866818916506],[-122.88615058370833,46.828220268483705],[-122.88563380785163,46.82807722124903],[-122.88524021673109,46.827821702082986],[-122.88530758424649,46.827544404914335],[-122.88493353816337,46.827337207152226],[-122.88395875508832,46.827035820151735],[-122.88312163085925,46.826684949669044],[-122.88300841140186,46.82638196885142],[-122.88228320563336,46.82623131725097],[-122.88195188609343,46.826230464607846],[-122.88131619546353,46.82610861270524],[-122.88104439929312,46.82618293379488],[-122.87999273882396,46.826151614348674],[-122.87914490899638,46.82624557236514],[-122.87877228438524,46.82620716626917],[-122.87809443696649,46.82650729103693],[-122.87406252757631,46.82773806381354],[-122.87262997204044,46.828492320891854],[-122.87013139794419,46.83103822369071],[-122.86818240793028,46.83398887314897],[-122.86791075641074,46.83439311876765],[-122.86797359739231,46.83521841835224],[-122.86676481709006,46.8363004874675],[-122.86621356254622,46.83776775365271],[-122.86534441750447,46.83966926242314],[-122.86540226140953,46.841297297519304],[-122.8642246930246,46.84246391364178],[-122.86391519727485,46.843680165933904],[-122.86493805927549,46.84415533720389],[-122.86559709567136,46.84443394331737],[-122.86571351336204,46.84537621084584],[-122.86547348503566,46.847702306346264],[-122.86582127213859,46.848926748418535],[-122.86523939390227,46.84991038569805],[-122.86538503339503,46.85051385315458],[-122.86468470171323,46.851367779903995],[-122.86448206867327,46.8521893561707],[-122.86384635140602,46.853058993095914],[-122.86390815119694,46.8544951304942],[-122.86310915319515,46.85493944653328],[-122.86217617158732,46.85520411118196],[-122.86219899496533,46.85578141780181],[-122.86203256116336,46.85582088312512],[-122.8621484499844,46.856099799448145],[-122.86185929719467,46.85622653847656],[-122.86193285915093,46.856497775326346],[-122.86155545682004,46.856602645298096],[-122.86158518144705,46.85695217183718],[-122.86145129061673,46.857712973438],[-122.86103380565123,46.85794437779418],[-122.86061457391978,46.85813898101969],[-122.86033076347147,46.858478167532496],[-122.86039523977917,46.85865702735185],[-122.86023209232542,46.858774723235115],[-122.86011989802252,46.85901391011586],[-122.85970654957654,46.85915747232127],[-122.85946349557193,46.8593851963723],[-122.85942800079336,46.85953232380572],[-122.85900318128279,46.8598609170225],[-122.8586145800511,46.860164586512894],[-122.85782133015452,46.86041074084682],[-122.85719875074051,46.86092077955459],[-122.85582656298897,46.86143110310698],[-122.85428141220191,46.862390770061836],[-122.85260453394781,46.863991181732075],[-122.85094467665044,46.864136505364485],[-122.84946497903138,46.864272776401805],[-122.84810373490215,46.86399440428832],[-122.84675230342572,46.863554536481445],[-122.84590742191173,46.86336167834341],[-122.84451738820295,46.86332521262],[-122.8432214362629,46.86376607494935],[-122.84201252249773,46.86342602300908],[-122.84019468876187,46.862874415280345],[-122.83916638031945,46.8622831303808],[-122.83808754278182,46.86133531840875],[-122.83775872364689,46.86110198347993],[-122.83726898796778,46.860922293230374],[-122.8367519235781,46.861031918205356],[-122.83537386893873,46.861719255664866],[-122.8299693288443,46.86288602925137],[-122.82903911309572,46.863359428375986],[-122.8280080996872,46.86335803724785],[-122.82709056881032,46.863869600018916],[-122.82536037055131,46.86442171177856],[-122.82404256061324,46.86447557083085],[-122.82345803857498,46.86479527400607],[-122.82208432985861,46.86483340943843],[-122.82114243453171,46.86532635988084],[-122.8203149817987,46.86566513371264],[-122.81603497723762,46.87306110496553],[-122.81310206270692,46.872501506657414],[-122.81244269589742,46.87324042898018],[-122.81163211031372,46.87592380731192],[-122.81197321261521,46.87651323331755],[-122.8115425125851,46.876840030635464],[-122.81102414294455,46.87743240035624],[-122.81083810125159,46.87782735039673],[-122.80990380679607,46.880658624474506],[-122.80847666808208,46.882772609771365],[-122.80774520287748,46.88479197855776],[-122.80878929032724,46.88564463090054],[-122.8081583910469,46.88945269688182],[-122.8084619357845,46.891711627681644],[-122.80918744803911,46.892727962171506],[-122.80895158105969,46.894185404257684],[-122.81055686032383,46.8955420364139]],"type":"LineString"}}]}
+var geojsonLayer=L.geoJSON(ScatterC).addTo(mymap); 
+
+<!--Monitoring sites--> 
+var jordanst = L.marker([46.802, -123.086],
+    {title: "Jordan ST.", opacity:0.8});
+    jamesrd = L.marker([46.807, -123.072],
+    {title: "James Rd.", opacity:0.8});//.addTo(mymap); 
+    highway12 = L.marker([46.816, -123.067],
+    {title: "Highway 12 Bridge, Rochester", opacity:0.8});//.addTo(mymap);
+    avecrossing = L.marker([46.822, -123.050],
+    {title: "183 Ave SW crossing", opacity:0.8});//.addTo(mymap);
+    sargentrd = L.marker([46.829, -123.048],
+    {title: "Sargent Rd SW(Bridge)", opacity:0.8});//.addTo(mymap);
+    scattercreekwf = L.marker([46.8288, -123.007],
+    {title: "Scatter Creek Wildlife Area", opacity:0.8});//.addTo(mymap);
+    caserd = L.marker([46.830818, -122.993],
+    {title: "Case Rd SW", opacity:0.8});//.addTo(mymap);
+    lietnerrd = L.marker([46.830797, -122.9781],
+    {title: "Leitner Rd SW", opacity:0.8});//.addTo(mymap);
+    equusr = L.marker([46.8266, -122.9500],
+    {title: "Equus Ridge Ln SW", opacity:0.8});//.addTo(mymap);
+    mcduffrd = L.marker([46.859464, -122.859305],
+    {title: "McDuff RD", opacity:0.8});//.addTo(mymap);
+    oldhwy = L.marker([46.850281, -122.865409],
+    {title: "Old HWY 99 SE", opacity:0.8});//.addTo(mymap);
+    churchillse = L.marker([46.852379, -122.802573],
+    {title: "6610 Churchill Rd SE", opacity:0.8});//.addTo(mymap);
+    churchillrd = L.marker([46.848565, -122.799513],
+    {title: "Churchill RD", opacity:0.8});//.addTo(mymap);
+    colvinranch = L.marker([46.860338,-122.9429375],
+    {title: "Colvin Ranch", opacity:0.8});//.addTo(mymap);
+
+var monitoringsites = L.layerGroup([jordanst,jamesrd,highway12,avecrossing,sargentrd,scattercreekwf,caserd,lietnerrd,equusr,mcduffrd,oldhwy,churchillse,churchillrd,colvinranch]);
+
+var greenIcon = new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+  //shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
+var redIcon = new L.Icon({
+	iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+	//shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/img/marker-shadow.png',
+	iconSize: [25, 41],
+	iconAnchor: [12, 41],
+	popupAnchor: [1, -34],
+	shadowSize: [41, 41]
+});
+
+var orangeIcon = new L.Icon({
+	iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png',
+	//shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/img/marker-shadow.png',
+	iconSize: [25, 41],
+	iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+	shadowSize: [41, 41]
+});
+
+
+var jordanst21 = L.marker([46.802, -123.086],
+    {title: "Jordan ST.", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:4/23/2021 </h2> <br> Water Present:Yes </br> Flowing:yes");
+    jamesrd21 = L.marker([46.807, -123.072],
+    {title: "James Rd.", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:4/29/2021 </h2> <br> Water Present:Yes </br> <br>Flowing:no </br> <br>Notes:Lots of grass,receding water line</br>");
+    avecrossing21 = L.marker([46.822, -123.050],
+    {title: "183 Ave SW crossing", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:4/24/2021 </h2> <br> Water Present:Yes </br> <br>Flowing:no</br> <br>Notes:Lots of reeds</br>");
+    sargentrd21 = L.marker([46.829, -123.048],
+    {title: "Sargent Rd SW(Bridge)", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:5/4/2021 </h2> <br> Water Present:Yes </br> Flowing:yes<br>Notes:water flow stops at the end of my mother's field due to blockage down stream.  It is intentional blockage so his property doesn't flood.</br>");;
+    churchillse21 = L.marker([46.852379, -122.802573], {title: "6610 Churchill Rd SE", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:4/24/2021 </h2> <br> Water Present:Yes </br> <br>Flowing:Yes</br>");
+
+var waterpresentone = L.layerGroup([jordanst21,jamesrd21,avecrossing21,sargentrd21,churchillse21]);
+
+
+var jordan21 =  L.marker([46.802, -123.086],
+    {title: "Jordan ST.", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:5/21/2021 </h2> <br> Water Present:Yes </br> Flowing:no");
+    ave21 = L.marker([46.822, -123.050],
+    {title: "183 Ave SW crossing", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:5/29/2021 </h2> <br> Water Present:Yes </br> <br>Flowing:no</br> <br>Notes:water about 3ft deep in middle</br>");
+    churchse21 = L.marker([46.852379, -122.802573], {title: "6610 Churchill Rd SE", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:5/19/2021 </h2> <br> Water Present:Yes </br> <br>Flowing:Yes</br>");
+    james21 = L.marker([46.807, -123.072],
+    {title: "James Rd.", icon:greenIcon})/*.addTo(mymap).addTo(mymap)*/.bindPopup("<h2> Date:5/14/2021 </h2> <br> Water Present:Yes </br> <br>Flowing:Yes</br> <br>Notes:water level receded by at least half</br>");
+    way12 = L.marker([46.816, -123.067],
+    {title: "Highway 12 Bridge, Rochester", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:5/9/2021-5/16/2021 </h2> <br> Water Present:Yes </br> <br>Flowing:Yes</br> <br>Notes:water level down  4 to 6 inches</br>");
+var group2 = L.layerGroup([jordan21,ave21,james21,way12,churchse21]);
+
+
+var jordan =  L.marker([46.802, -123.086],
+    {title: "Jordan ST.", icon:redIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:7/4/2021 </h2> <br> Water Present:No </br> <br> Flowing:no</br> <br>Notes: dry</br>");
+    av21 = L.marker([46.822, -123.050],
+    {title: "183 Ave SW crossing", icon:redIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:7/3/2021 </h2> <br> Water Present:No </br><br>Flow:no</br>");
+    sard21 = L.marker([46.829, -123.048],
+    {title: "Sargent Rd SW(Bridge)", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:7/5/2021 </h2> <br> Water Present:Yes </br> Flowing:yes<br>Notes:Shallow but still flowing.Our swimming hole was pretty nasty so we broke down our small dam.</br>");
+    chse21 = L.marker([46.852379, -122.802573], {title: "6610 Churchill Rd SE", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:7/4-9/4 </h2> <br> Water Present:Yes </br> <br>Flowing:Yes</br> Notes: Lots of islands, can walk across in many places.  Pools still a foot or so deep.  Stream still flowing. (7/4)<br>Still a foot or so deep in the pools behind logs.  Seep down hillside much reduced but still muddy.(7/30)</br> <br>Still have seepage on the hillside so I expect there's more of that upstream from me, too, feeding the consistent flow in spite of the drought.(9/4)</br> ");
+var group3 =L.layerGroup([jordan,av21,sard21,chse21])
+
+var jor21 =  L.marker([46.802, -123.086],
+    {title: "Jordan ST.", icon:redIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/5/2021 </h2> <br> Water Present:Yes </br> <br> Flowing:no</br> <br>Notes: small shallow pools</br>");
+    way21 = L.marker([46.816, -123.067],
+    {title: "Highway 12 Bridge, Rochester", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/1/2021 </h2> <br> Water Present:Yes </br> <br>Flowing:Yes</br> <br>Notes: water is barely flowing.lots of grass</br>");
+    chur21 = L.marker([46.852379, -122.802573], {title: "6610 Churchill Rd SE", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/9/2021 </h2> <br> Water Present:Yes </br> <br>Flowing:Yes</br>");
+    jrd21 = L.marker([46.807, -123.072],
+    {title: "James Rd.", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/1/2021-6/11/2021 </h2> <br> Water Present:Yes </br> <br>Flowing:Yes in 6/1 but no in 6/11</br> <br>Notes:<br>water barely flowing (6/1)</br>water not flowing.  puddles with small fish swimming. lots of grass(6/11/21)</br>");
+    av1 = L.marker([46.822, -123.050],
+    {title: "183 Ave SW crossing", icon:redIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/10/2021 </h2> <br> Water Present:No </br><br>Flowing:No</br>Notes:Marshy");
+var group4 = L.layerGroup([jor21,way21,chur21,jrd21,av1]);
+
+var avee1 = L.marker([46.822, -123.050],
+    {title: "183 Ave SW crossing", icon:redIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/22/2021 </h2> <img src='https://chehalisbasinpartnership.org/wp-content/uploads/2023/09/Teva_Y.jpg' width= '100' height= '100'/> <br> Water Present:No </br><br>Flowing:No</br>Notes:still Marshy but drier");
+    scattercwf = L.marker([46.8288, -123.007],
+    {title: "Scatter Creek Wildlife Area",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/26/2021 </h2><img src='https://wdfw.wa.gov/sites/default/files/2020-06/scatter_creek_unit.jpg' width= '100' height= '100'/> <br> Water Present:Yes </br><br>Flowing:No</br>Notes:Water appears to be stagnant");
+    j21 = L.marker([46.807, -123.072],
+    {title: "James Rd.", icon:orangeIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/18-6/23 </h2> <br> Water Present:Yes on 6/18 and no on 6/23 </br> <br>Flowing:no </br> <br>Notes:<br>water is down to a few large puddles(6/18)</br> <br>creek is gone (6/23) </br></br>");
+var group5 = L.layerGroup([avee1,scattercwf,j21]);
+
+
+var jsrd23 = L.marker([46.807, -123.072],
+    {title: "James Rd.", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:5/15/2023-6/9/2023</h2> <img src='https://chehalisbasinpartnership.org/wp-content/uploads/2023/09/IMG_20230609_134810502.jpg' width= '100' height= '100'/> <br> Water Present:Yes on both dates 5/15 and 6/9 </br> <br>Flowing: Yes on 5/15 and no on 6/9 </br> <br>Notes:1.5inches on 5/15 and 1 inches on 6/9</br>");
+    jan23 =  L.marker([46.802, -123.086],
+    {title: "Jordan ST.", icon:redIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/2/2023 </h2> <img src='https://chehalisbasinpartnership.org/wp-content/uploads/2023/09/Kellie_F_Jorden_ST.jpg' width= '100' height= '100'/> <br> Water Present:Yes </br> <br> Flowing:no</br> <br>Notes: Approximate last day of water present</br>");
+var group123= L.layerGroup([jsrd23,jan23]);
+
+var jrd23 = L.marker([46.807, -123.072],
+    {title: "James Rd.", icon:redIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/27/2023</h2>  <br> Water Present:No </br> <br>Flowing: No </br> <br>Notes: Completely dried up</br>");
+    mcduffrd23 = L.marker([46.859464, -122.859305],
+    {title: "McDuff RD",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/30/2023</h2>  <br> Water Present:Yes </br> <br>Flowing: No </br> <br>Notes: Fish are present</br>");
+    oldhighway23 = L.marker([46.816, -123.067],
+    {title: "Highway 12 Bridge, Rochester", icon:redIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/30/2023 </h2> <br> Water Present:No </br> <br>Flowing:No</br> <br>Notes: Dry</br>");
+    chur23 = L.marker([46.852379, -122.802573], {title: "6610 Churchill Rd SE", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/29/2023 </h2> <br> Water Present:Yes </br> <br>Flowing:NA</br> Notes:Decrease in Creek size");
+    churchillrd23 = L.marker([46.848565, -122.799513],
+    {title: "Churchill RD",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/30/2023 </h2> <img src='https://chehalisbasinpartnership.org/wp-content/uploads/2023/09/Patricia_churchillRD_June29_2023-rotated.jpg' width= '100' height= '100'/> <br> Water Present:Yes </br> <br>Flowing: Not apparent</br>");
+var group223= L.layerGroup([jrd23,mcduffrd23,oldhighway23,chur23,churchillrd23]);
+
+var indepen23 =  L.marker([46.8071696, -123.103234],
+    {title: "Private Property near James Rd-Independence RD Junction",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:7/2/2023-7/22/2023 </h2> <img src='https://chehalisbasinpartnership.org/wp-content/uploads/2023/09/Kellie_privateproperty_july17-400x284.jpg' width= '100' height= '100'/> <br> Water Present:Yes on 7/2-7/22</br> <br>Flowing: yes on 7/2 and tickle over dam 7/7-7/22</br> Notes:A lot of fishes on 7/2");
+    church23 = L.marker([46.852379, -122.802573], {title: "6610 Churchill Rd SE", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:7/4/2023 </h2> <br> Water Present:Yes </br> <br>Flowing:Yes</br> Notes:very low levels but I'm closse to the headwaters so it's still running. Water is still tricking down from springs up the slope towards churchill on my property");
+    chillrd23 = L.marker([46.848565, -122.799513],
+    {title: "Churchill RD",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:7/30/2023 </h2> <br> Water Present:Yes </br> <br>Flowing: Slowly</br> Notes:beaver dam downstream appears to be holding back water");   
+var group323= L.layerGroup([indepen23,church23,chillrd23]);
+
+var scattercwf23 = L.marker([46.8288, -123.007],
+    {title: "Scatter Creek Wildlife Area",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:8/1/2023 </h2> <img src='https://chehalisbasinpartnership.org/wp-content/uploads/2023/09/Guava_Farley.jpg' width= '100' height= '100'/> <br> Water Present:Yes </br><br>Flowing:No</br>Notes:Deepest part ~3'', water temp: too slow ");
+    lietnerrd23 = L.marker([46.830797, -122.9781],
+    {title: "Leitner Rd SW",icon:redIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:8/1/2023 </h2> <br> Water Present:No </br><br>Flowing:No</br>");
+    equusr23 = L.marker([46.8266, -122.9500],
+    {title: "Equus Ridge Ln SW",icon:greenIcon})/*.addTo(mymap).addTo(mymap)*/.bindPopup("<h2> Date:8/1/2023 </h2> <img src='https://chehalisbasinpartnership.org/wp-content/uploads/2023/09/Farley_Equus_August1_2023.jpg' width= '100' height= '100'/> <br> Water Present:Yes </br><br>Flowing:No</br> Notes:Water Temp© 16.16 and many schools of Juvenile fish");
+    mcduffrd23 = L.marker([46.859464, -122.859305],
+    {title: "McDuff RD",icon:redIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:8/30/2023</h2>  <br> Water Present:No </br> <br>Flowing: No </br>");
+    colvinranch23 = L.marker([46.860338,-122.9429375],
+    {title: "Colvin Ranch",icon:orangeIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:8/3/2023 and 9/1/2023</h2> <img src='https://chehalisbasinpartnership.org/wp-content/uploads/2023/09/Scatter_Creek_Colvin_Sept_1_lastflow_2023-1.jpg' width= '100' height= '100'/> <br> Water Present:Yes on 8/3/2023 and no on 9/1/2023 </br><br>Flowing:No</br> Notes:standing water only about a foot deep on 8/3.There's a small pool of water further upstream on 9/1/2023");
+var group423= L.layerGroup([scattercwf23,lietnerrd23,equusr23,mcduffrd23,colvinranch23]);
+
+
+var j23 =  L.marker([46.802, -123.086],
+    {title: "Jordan ST.", icon:redIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/15/2023 </h2> <br> Water Present:No </br> <br> Flowing:No</br> <br>Notes: dry</br>");
+    jr23 = L.marker([46.807, -123.072],
+    {title: "James Rd.", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/15/2023</h2> <img src='https://chehalisbasinpartnership.org/wp-content/uploads/2023/09/IMG-1095-rotated.jpg' width= '100' height= '100'/> <br> Water Present:Yes </br> <br>Flowing: No </br> <br>Notes:Low flow of water</br>");
+    ave23 = L.marker([46.822, -123.050],
+    {title: "183 Ave SW crossing", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/15/2023 </h2> <br> Water Present:Yes </br><br>Flowing:No</br>Notes:standing water");
+    sard23 = L.marker([46.829, -123.048],
+    {title: "Sargent Rd SW(Bridge)", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/15/2023 </h2> <br> Water Present:Yes </br> Flowing:Yes<br>Notes:Algea Presence</br>");
+    scatter23 = L.marker([46.8288, -123.007],
+    {title: "Scatter Creek Wildlife Area",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/15/2023 </h2> <img src='https://chehalisbasinpartnership.org/wp-content/uploads/2023/09/IMG-1097-rotated.jpg' width= '100' height= '100'/> <br> Water Present:Yes </br><br>Flowing:No</br> Notes:LOW water flow");
+    caserd23 = L.marker([46.830818, -122.993],
+    {title: "Case Rd SW",icon:redIcon })/*.addTo(mymap)*/.bindPopup("<h2> Date:6/15/2023 </h2> <br> Water Present:No</br><br>Flowing:No</br> Notes:Dry");
+    mcduff23 = L.marker([46.859464, -122.859305],
+    {title: "McDuff RD",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/15/2023</h2>  <br> Water Present:Yes </br> <br>Flowing:Yes </br> Notes: LOW water flow");
+    chillrd23 = L.marker([46.848565, -122.799513],
+    {title: "Churchill RD",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/15/2023 </h2> <img src='https://chehalisbasinpartnership.org/wp-content/uploads/2023/09/IMG-1101-rotated.jpg' width= '100' height= '100'/> <br> Water Present:Yes </br> <br>Flowing: No </br> Notes:muddy water");
+var group523= L.layerGroup([j23,jr23,ave23,sard23,scatter23,caserd23,mcduff23,chillrd23]);
+
+var jordan22 =  L.marker([46.802, -123.086],
+    {title: "Jordan ST.", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:5/12/2022 </h2> <br> Water Present:Yes</br> <br> Flowing:Yes</br> <br>Notes: 1.7</br>");
+    oldhighway22 = L.marker([46.816, -123.067],
+    {title: "Highway 12 Bridge, Rochester", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:5/11/2022 </h2> <br> Water Present:Yes </br> <br>Flowing:Yes</br>");
+    avecrossing22 = L.marker([46.822, -123.050],
+    {title: "183 Ave SW crossing", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:5/11/2022 </h2> <br> Water Present:Yes </br><br>Flowing:Yes </br>");
+    sargentrd22 = L.marker([46.829, -123.048],
+    {title: "Sargent Rd SW(Bridge)", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:5/11/2022 </h2> <br> Water Present:Yes </br> <br>Flowing:yes</br>");
+    scattercreek22= L.marker([46.8288, -123.007],
+    {title: "Scatter Creek Wildlife Area",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:5/11/2022 </h2> <br> Water Present:Yes </br><br>Flowing:Yes</br> Notes:13.8 inches");
+    lietnerrd22 = L.marker([46.830797, -122.9781],
+    {title: "Leitner Rd SW",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:5/11/2022 </h2> <br> Water Present:Yes </br><br>Flowing:Yes</br>");
+    oldhwy22 = L.marker([46.850281, -122.865409],
+    {title: "Old HWY 99 SE",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:5/11/2022 </h2> <br> Water Present:Yes </br><br>Flowing:Yes</br>");
+    indepen22 =  L.marker([46.8071696, -123.103234],
+    {title: "Private Property near James Rd-Independence RD Junction",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:5/23/2022 </h2> <br> Water Present:Yes</br> <br>Flowing: Yes</br>");
+    jdan22 =  L.marker([46.802, -123.086],
+    {title: "Jordan ST.", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:5/23/2022 </h2> <br> Water Present:Yes</br> <br> Flowing:Yes</br>");
+    var group122= L.layerGroup([jordan22,oldhighway22,avecrossing22,sargentrd22,scattercreek22,lietnerrd22, oldhwy22,indepen22,jdan22]);
+
+var  oldhighway22 = L.marker([46.816, -123.067],
+    {title: "Highway 12 Bridge, Rochester", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:4/5/2022 </h2> <br> Water Present:Yes </br> <br>Flowing:Yes</br>");
+    avecr22 = L.marker([46.822, -123.050],
+    {title: "183 Ave SW crossing", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:4/5/2022 </h2> <br> Water Present:Yes </br><br>Flowing:Yes </br>");
+    sargent22 = L.marker([46.829, -123.048],
+    {title: "Sargent Rd SW(Bridge)", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:4/5/2022 </h2> <br> Water Present:Yes </br> <br>Flowing:yes</br>");
+    scatterc22= L.marker([46.8288, -123.007],
+    {title: "Scatter Creek Wildlife Area",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:4/5/2022 </h2> <img src='https://chehalisbasinpartnership.org/wp-content/uploads/2023/09/Scatter-Creek-Wildlife-Area-4-5-22-Measurement-rotated.jpg' width= '100' height= '100'/> <br> Water Present:Yes </br><br>Flowing:Yes</br> Notes:14 inches");
+    lietrd22 = L.marker([46.830797, -122.9781],
+    {title: "Leitner Rd SW",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:4/5/2022 </h2> <br> Water Present:Yes </br><br>Flowing:Yes</br>");
+    oldh22 = L.marker([46.850281, -122.865409],
+    {title: "Old HWY 99 SE",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:4/5/2022 </h2> <br> Water Present:Yes </br><br>Flowing:Yes</br>");
+    churchillse22 = L.marker([46.852379, -122.802573],
+    {title: "6610 Churchill Rd SE",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:4/6-4/19 </h2> <br> Water Present:Yes </br><br>Flowing:Yes</br> Notes:Level is high.  Can see from deck 100' up the hillside on 4/6 and Still able to see from deck. Level looks high but still within the banks on 4/6");
+    ind22 =  L.marker([46.8071696, -123.103234],
+    {title: "Private Property near James Rd-Independence RD Junction",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:5/4/2022 </h2> <br> Water Present:Yes</br> <br>Flowing: Yes</br>");
+var group222= L.layerGroup([oldhighway22,avecr22,sargent22,scatterc22,lietrd22,oldh22,churchillse22,ind22]);
+
+var ipen22 =  L.marker([46.8071696, -123.103234],
+    {title: "Private Property near James Rd-Independence RD Junction",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/3/2022 </h2> <br> Water Present:Yes</br> <br>Flowing: Yes</br>");
+    jo22 =  L.marker([46.802, -123.086],
+    {title: "Jordan ST.", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/3/2022 </h2> <br> Water Present:Yes</br> <br> Flowing:Yes</br> <br>Notes: 1.4</br>");
+    scattc22= L.marker([46.8288, -123.007],
+    {title: "Scatter Creek Wildlife Area",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/27/2022 </h2> <img src='https://chehalisbasinpartnership.org/wp-content/uploads/2023/09/Scatter_Creek_at_Wildlife_area_062722.jpg' width= '100' height= '100'/> <br> Water Present:Yes </br><br>Flowing:Yes</br> Notes:lots of water at the gravel beach access near the parking area. Couldn't not tell if it was flowing but since it was so clear I marked 'yes'  Water cool and clear. I observed juvenile");
+    caserd22 = L.marker([46.830818, -122.993],
+    {title: "Case Rd SW",icon:greenIcon })/*.addTo(mymap)*/.bindPopup("<h2> Date:6/27/2022 </h2> <br> Water Present:Yes </br><br>Flowing: Yes</br> Notes:Water visibly flowing - as seen from a quick 'drive by' in a car");
+    lit22 = L.marker([46.830797, -122.9781],
+    {title: "Leitner Rd SW",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/27/2022 </h2> <br> Water Present:Yes </br><br>Flowing:Yes</br> Notes: 13.25'' Date is estimad");
+    oldhy22 = L.marker([46.850281, -122.865409],
+    {title: "Old HWY 99 SE",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:6/27/2022 </h2> <br> Water Present:Yes </br><br>Flowing:Yes</br>Notes: Flow verying slowly. Date estimated.");
+var group322 = L.layerGroup([ipen22,jo22,scattc22,caserd22,lit22,oldhy22]);
+
+var idpen22 =  L.marker([46.8071696, -123.103234],
+    {title: "Private Property near James Rd-Independence RD Junction",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:7/3,7/24,7/27 </h2> <br> Water Present:Yes</br> <br>Flowing:Yes on 7/3 and 7/27, no on 7/24 </br> Notes:The other area that I'm monitoring is just pools at this point.  No longer flowing.  I saw little fish in them.  Sadly, they'll be dying soon on 7/24.Significantly less flow than at James Road same day on 7/27.");
+    jor22 =  L.marker([46.802, -123.086],
+    {title: "Jordan ST.", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:7/3/2022 and 7/24/2022</h2> <img src='https://chehalisbasinpartnership.org/wp-content/uploads/2023/09/Scatter_Creek_at_KF_072622b.jpg' width= '100' height= '100'/> <br> Water Present:Yes</br> <br> Flowing:Yes</br> <br>Notes:Flowing slightly. Scatter Creek, on my property, is flowing slightly.  We have a spring that helps keep it flowing.  The annual beaver dam is coming along nicely.  I'm thankful to have them...making the pool deeper and keeping the fish cooler on 7/24. </br>");
+    ac22 = L.marker([46.822, -123.050],
+    {title: "183 Ave SW crossing", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:7/3/2022 and 7/18/2022 </h2> <br> Water Present:Yes </br><br>Flowing:Yes </br>");
+    sargt22 = L.marker([46.829, -123.048],
+    {title: "Sargent Rd SW(Bridge)", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:7/22/2022 and 7/27/2022 </h2> <br> Water Present:Yes </br> <br>Flowing:yes</br> Notes:significantly more flow than at James Rd same day on 7/27");
+    casrd22 = L.marker([46.830818, -122.993],
+    {title: "Case Rd SW",icon:redIcon })/*.addTo(mymap)*/.bindPopup("<h2> Date:7/22/2022 </h2> <br> Water Present:No </br><br>Flowing: No/br> Notes:Dried algae on land surface. Mud. Loss of water appears recent");
+    litner22 = L.marker([46.830797, -122.9781],
+    {title: "Leitner Rd SW",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:7/18/2022 </h2> <br> Water Present:Yes </br><br>Flowing: No</br> Notes: 7.75''");  
+    olhwy22 = L.marker([46.850281, -122.865409],
+    {title: "Old HWY 99 SE",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:7/18/2022 </h2> <br> Water Present:Yes </br><br>Flowing:Yes</br>");
+    churse22 = L.marker([46.852379, -122.802573],
+    {title: "6610 Churchill Rd SE",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:7/11/2022 </h2> <img src='https://chehalisbasinpartnership.org/wp-content/uploads/2023/09/Patricia_churchillRD_July11_2022-rotated.jpg' width= '100' height= '100'/> <br> Water Present:Yes </br><br>Flowing:Yes</br> Notes:Level very low.  Can walk across many places on exposed rocks.");
+var group422 = L.layerGroup([idpen22,jor22,ac22,sargt22,casrd22,litner22,olhwy22,churse22]);
+
+var idpen22 =  L.marker([46.8071696, -123.103234],
+    {title: "Private Property near James Rd-Independence RD Junction",icon:redIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:8/4/2022</h2> <img src='https://chehalisbasinpartnership.org/wp-content/uploads/2023/09/Scatter_Creek_at_KF_080422-1.jpg' width= '100' height= '100'/> <img src='https://chehalisbasinpartnership.org/wp-content/uploads/2023/09/Scatter_Creek_at_KF_080422b.jpg' width= '100' height= '100'/> <br> Water Present: Yes </br> <br>Flowing: No </br>");
+    jdan22 =  L.marker([46.802, -123.086],
+    {title: "Jordan ST.", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:8/7/2022 </h2> <br> Water Present:Yes</br> <br> Flowing:Yes</br> <br>Notes:Flowing slightly </br>");
+    sarrd22 = L.marker([46.829, -123.048],
+    {title: "Sargent Rd SW(Bridge)", icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:8/4,8/8,8/23 and 7/27/2022 </h2> <br> Water Present:Yes </br> <br>Flowing:yes</br> Notes:Abundant fish fry observed - about 1.5 inches long, species unknown. Ponies walking in creek on 8/23.");
+    scattc22= L.marker([46.8288, -123.007],
+    {title: "Scatter Creek Wildlife Area",icon:orangeIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:8/8 and 8/23 </h2> <br> Water Present:Yes on 8/8 and no on 8/23</br><br>Flowing: No on both dates </br> Notes:very warm pool with a decent amount of deceased baby fish on 8/8. Pool dug out at the site is cut off from stream channel. No water in stream channel on 8/23");
+    card22 = L.marker([46.830818, -122.993],
+    {title: "Case Rd SW",icon:redIcon })/*.addTo(mymap)*/.bindPopup("<h2> Date:8/1/2022 </h2> <br> Water Present:No </br><br>Flowing: No/br> Notes:Dry mud only");
+    lei22 = L.marker([46.830797, -122.9781],
+    {title: "Leitner Rd SW",icon:orangeIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:8/5/2022 and 8/23/2022 </h2> <br> Water Present:Yes on 8/5 and No on 8/23</br><br>Flowing: No on both dates</br> Notes: technically 0'' at my measurement spot, but there's maybe 4-6 inches water nearer to the middle on 8/5.Some residual water in pools. No water in channel no flow on 8/23");  
+    equusr22 = L.marker([46.8266, -122.9500],
+    {title: "Equus Ridge Ln SW",icon:greenIcon})/*.addTo(mymap).addTo(mymap)*/.bindPopup("<h2> Date:8/4/2022 </h2> <br> Water Present:Yes </br><br>Flowing:No</br> Notes: Pool");
+    olhy22 = L.marker([46.850281, -122.865409],
+    {title: "Old HWY 99 SE",icon:redIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:8/5/2022 </h2> <br> Water Present:No </br><br>Flowing:No</br>");
+    churchill22 = L.marker([46.852379, -122.802573],
+    {title: "6610 Churchill Rd SE",icon:greenIcon})/*.addTo(mymap)*/.bindPopup("<h2> Date:8/27/2022 </h2> <br> Water Present:Yes </br><br>Flowing:Yes</br> Notes:Lowest I've seen it.  Flow is very slow and most of the creek bed is exposed.  Creek is about 2 ft wide.");
+var group522 = L.layerGroup([idpen22,jdan22,sarrd22,scattc22,card22,lei22,equusr22,olhy22,churchill22]);
+
+
+var basem = L.tileLayer(mymap);
+var basemap = {
+        "OpenStreetMap": basem
+};
+
+var overlayMaps = {
+    "Monitoring_Sites": monitoringsites
+};
+
+var layerControl = L.control.layers(basemap, overlayMaps).addTo(mymap);
+layerControl.addOverlay(waterpresentone, "2021 dates 4/20-5/4")
+layerControl.addOverlay(group2, "2021 dates 5/9-5/29")
+layerControl.addOverlay(group4, "2021 dates 6/1-6/11")
+layerControl.addOverlay(group5, "2021 dates 6/18-6/26")
+layerControl.addOverlay(group3, "2021 dates 7/4-9/4")
+layerControl.addOverlay(group222, "2022 dates 4/5-5/4")
+layerControl.addOverlay(group122, "2022 dates 5/11-5/23")
+layerControl.addOverlay(group322, "2022 dates 6/3-6/27")
+layerControl.addOverlay(group422, "2022 dates 7/3-7/27")
+layerControl.addOverlay(group522, "2022 dates 8/4-8/27")
+layerControl.addOverlay(group123, "2023 dates 5/15-6/9")
+layerControl.addOverlay(group523, "2023 dates 6/15")
+layerControl.addOverlay(group223, "2023 dates 6/27-6/30")
+layerControl.addOverlay(group323, "2023 dates 7/2-7/30")
+layerControl.addOverlay(group423, "2023 dates 8/1-8/3")
+</script>
+<br>
+<!--legend-->
+<div id="legend" style="width:600px; height:100px; margin: auto;">
+    <h4>Water Presence Legend</h4>
+    <table style="width:500px">
+        <tr>
+            <td style="text-align: center;">Water exists</td>
+            <td style="text-align: center;">Water existed and dried.</td>
+            <td style="text-align: center;">Water dried up.</td>
+        </tr>
+        <tr>
+        <td style="text-align: center;">    
+    <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png" alt="green marker" style="width:25px;height:35px;">
+    </td><td style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png" alt="green marker" style="width:25px;height:35px;">
+    </td><td style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png" alt="green marker" style="width:25px;height:35px;">
+    </td>
+    </tr>
+    </table>    
+
+</div>
+</body>
+</html>

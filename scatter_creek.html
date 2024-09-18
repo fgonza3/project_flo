@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Food Access in Washington</title>
+  <title>Colors - Python</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -97,7 +97,14 @@
         font-size: 15pt;
         color: white
     }
-    
+    .image-container img {
+      width: 100%;
+      height: auto;
+    }
+
+    .content-container {
+      margin-top: 20px;
+    }
 </style>
 
   <!-- =======================================================
@@ -122,57 +129,54 @@
         <div class="container">
             <div class="row mb-4 align-items-center">
                 <div class="col-md-6" data-aos="fade-up">
-                    <h2>Food Access in Washington State 2010</h2>
-                    <p>Geopandas Programming</p>
+                    <h2> Scatter Creek Hydrology Map</h2>
+                    <p> Web Map</p>
                 </div>
             </div>
 
             <div class="site-section pb-0">
                 <div class="container">
-                    <div class="row align-items-stretch">
+                    <div class="row">
                         <!-- Image container now takes full width -->
-                        <div class="col-12" data-aos="fade-up" style="margin-top: -5px;">
-                          <section class="section3">
-                            <iframe src="food_access.html" width="100%" height="600" frameborder="0"></iframe>
-                        </section>
-                        </div>
+                        <iframe src="map_scatter.html" width="100%" height="600" frameborder="0"></iframe>
                         <!-- Text content now positioned under the image -->
-                        <div class="col-12" data-aos="fade-up" data-aos-delay="100">
+                        <div class="col-12 content-container" data-aos="fade-up" data-aos-delay="100">
                             <div class="sticky-content">
-                                <div class="mb-4">
-                                    <h4 class="h3 mb-3">Project Overview:</h4>
-                                    <p> According to a report compiled by the U.S. Department of Agriculture’s Economic Research Service in June 2009,
-                                      “Data from the latest census (2000) show that approximately 23.6 million people, or 8.4% of the U.S. population,
-                                      live in low-income neighborhoods located more than a mile from a supermarket.” Using this framework,
-                                      I created geospatial maps with GeoPandas to simulate their analysis and better understand food access in 
-                                      Washington State.
-                                      </p>
-                                      <p>
-                                      In these maps, we define "low access" based on census tract data, identifying areas where a significant portion 
-                                      of the population lacks nearby access to grocery stores that offer affordable and nutritious food. It’s important 
-                                      to distinguish between urban and rural areas: in urban settings, "low access" is defined as being more than 0.5 miles
-                                      from a grocery store, whereas in rural areas, it is defined as more than 10 miles.
-                                     </p>
-                                     <p>
-                                      To visualize food access in Washington, I merged USDA food access data in tabular CSV format with census tract data
-                                      in geospatial shapefile format for the state.
-                                      </p>
-                                      <p>
-                                      The map above highlights low-income and low-access census tracts in Washington. Specifically, it displays only 
-                                      low-income tracts that are either classified as low access at 0.5 miles (for urban areas) or 10 miles (for rural areas).
-                                      </p>
-                                    
-                                </div>
-                          
-                                <h4 class="h3 mb-3">What I did:</h4>
-                                <ul class="list-unstyled list-line mb-5">
-                                    <li>Utilized US Census Tract data and USDA datasets for analysis. </li>
-                                    <li>Developed data visualizations using GeoPandas for spatial insights.</li>
-                                    <li>Merged and filtered data to highlight food accessibility in rural and urban areas within the state.</li>
-                                    <li>Thoroughly tested and debugged the code to ensure accuracy and integrity.</li>
-                                    </ul>
+                              <div class="mb-5">
+                                <p> <h4 class="h3 mb-3">Background: </h4> </p>
+                                <p>I collaborated with a team of five, including a subgroup of two, to 
+                                  analyze upcoming changes and events that could impact neighborhoods around
+                                  Seattle. Our primary focus was on the Chinatown International District (CID)
+                                  and Downtown Seattle. Within my group, we concentrated on the Civic Campus
+                                  redevelopemt in Downtown Seattle. A final report detaling our finding and
+                                  strategies for this project, conducted for Sound Puget Sage, is available
+                                  for viewing</p>
+                                <p> <h4 class="h3 mb-3">Research Question:</h4> </p>
+                                <p> What Opportunities and threats over the next five years 
+                                  might affect small businesses and residents in the Downtown
+                                  Seattle neigborhhood?
+                                </p>
+                              </div>
+                                <p><a href="https://arcg.is/1iTyeT1" class="readmore">View Full StoryMap</a></p>
+                                <p><a href="https://docs.google.com/document/d/1v0DY4FKT9gpP3DLw4z9xecc68p7tdMlTjLypoD-rW_8/edit?usp=sharing" class="readmore">View Final Report</a></p>
+
+                              <h4 class="h3 mb-3">What I did:</h4>
+                              <ul class="list-unstyled list-line mb-5">
+                                <li>Geocoded address using ArcGIS Pro</li>
+                                <li>Cleaned and processed a large dataset from the Seattle Open Data Portal, focusing on public land use and master use permits.</li>
+                                <li>Created maps to showcase changes in the built environment.</li>
+                                <li>Utilized SQL and Python for data mainpulation and analysis.</li>
+                              </ul>
+                              <p> <h4 class="h3 mb-3">Summary:</h4> </p>
+                              <p>In Downtown, the implementation of three new zoning laws and the planned Civic Campus redevelopment offer significant opportunities for growth and modernization. 
+                                The new industrial zones—Mixed Manufacturing and Logistics (MML), Industry and Innovation (II), and Urban Industrial (UI)—are designed to balance traditional and 
+                                emerging industries, diversify industrial uses, and expand employment centers. However, challenges include the potential reduction of public land and affordable housing.
+                                To foster a vibrant urban environment, it is recommended to incorporate publicly accessible areas such as parks, plazas, and community centers into the redevelopment. 
+                                Supporting a variety of uses, including retail, entertainment, cultural spaces, and public utilities, is also advised. Additionally, promoting economic diversity can 
+                                help alleviate financial pressures on businesses reliant on the Civic Campus. Potential benefits of these initiatives include enhanced community safety, improved prison 
+                                facilities, and economic revitalization.</p>
                             </div>
-                        </div>
+                          </div>
                         
                     </div>
                 </div>
