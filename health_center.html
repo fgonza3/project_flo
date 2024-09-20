@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Accesses to FQHCs - ArcGIS Pro</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Mapbox stuff -->
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js"></script>
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=https://fonts.googleapis.com/css?family=Inconsolata:400,500,600,700|Raleway:400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- Mapbox CSS -->
+  <style>
+    /* CSS styles for the Mapbox map */
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+
+    #legend {
+      position: absolute;
+      bottom: 10px; /* Adjust top position as needed */
+      left: 10px; /* Adjust left position as needed */
+      width: 20%;
+      max-width: 150px; /* Adjust width as needed */
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 3px;
+      padding: 10px;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      z-index: 1; /* Ensure legend appears above the map */
+    }
+
+    .break {
+        position: relative;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .dot {
+        display: inline-block;
+        margin-top: 5px;
+        border-radius: 50%;
+        opacity: 0.6;
+        margin-right: 5px;
+    }
+
+    .dot-label {
+      vertical-align: middle;
+    }
+
+    a {
+        color: black
+    }
+
+    #title {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-top: 20px;
+        margin-left: 20px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 25pt;
+        color: white
+    }
+
+    #subtitle {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-top: 70px;
+        margin-left: 190px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 15pt;
+        color: white
+    }
+    .image-container img {
+      width: 100%;
+      height: auto;
+    }
+
+    .content-container {
+      margin-top: 20px;
+    }
+</style>
+
+  <!-- =======================================================
+  * Template Name: MyPortfolio
+  * Template URL: https://bootstrapmade.com/myportfolio-bootstrap-portfolio-website-template/
+  * Updated: Mar 17 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Navbar ======= -->
+  <div class="back-button">
+    <a href="index.html">&#x2190; back</a>
+  </div>
+
+
+  <main id="main">
+    <section class="section">
+        <div class="container">
+            <div class="row mb-4 align-items-center">
+                <div class="col-md-6" data-aos="fade-up">
+                    <h2>Accesses to Federally Qualified Health Centers (FQHCs) in Connecticut</h2>
+                    <p>ArcGIS Pro</p>
+                </div>
+            </div>
+
+            <div class="site-section pb-0">
+                <div class="container">
+                    <div class="row">
+                        <!-- Text content now positioned under the image -->
+                        <div class="col-12 content-container" data-aos="fade-up" data-aos-delay="100">
+                            <div class="sticky-content">
+                              <div class="mb-5">
+                                <p> <h4 class="h3 mb-3">Background: </h4> </p>
+                                <p>When evaluating healthcare accessibility, various factors must be considered. 
+                                    One key aspect is the distance to Federally Qualified Health Centers (FQHCs) 
+                                    in Connecticut and how this impacts accessibility for certain populations. 
+                                    The data used comes from U.S. census tract population information and the Centers 
+                                    for Disease Control and Prevention (CDC). Analyzing the distribution of FQHCs 
+                                    and their distance from different communities is crucial to understanding whether 
+                                    these centers are easily accessible. Additionally, understanding where FQHCs are 
+                                    located in relation to the target population helps guide effective resource 
+                                    allocation.</p>
+                                    <p> <h4 class="h3 mb-3">Goal: </h4> </p>
+                                    <p>The goal is to calculate geographic access to FQHCs and estimate how the population 
+                                        below the poverty level in Connecticut is served by these centers within a 1-mile 
+                                        proximity, using US Census Tract population data.</p>
+                                <h4 class="h3 mb-3">What I did:</h4>
+                                <ul>
+                                    <li>Proximity-Based Analysis: The exercise involves comparing two types of proximity-based 
+                                        analyses: a 1-mile Euclidean distance (straight line) buffer and a 1-mile Network-based 
+                                        service area for Federally Qualified Health Care Centers (FQHCs) in Connecticut.</li>
+                                    <li>Tools and Techniques: Arc GIS Pro tools and Esri Extensions, specifically the buffer tool, are used to create 
+                                        both Euclidean and Network-based distance areas. Population data is aggregated using population-weighted 
+                                        centroids to generate service areas.</li>
+                                    <li>Target Population Estimation: Census tract population centers falling within the 1-mile buffer or 
+                                        network service area are selected, and the populations within these areas are summed to estimate 
+                                        how many people have geographic access to a FQHC.</li>
+                                </ul>
+                              </div>
+                              <div class="col-12" data-aos="fade-up" style="margin-top: -5px;">
+                                <div class="image-container">
+                                    <img src="assets/img/table.png" alt="Descriptive Text for Image">
+                                </div>
+                                <p>
+                                    Table 1 presents the population groups along with their respective counts, showing both Euclidean 
+                                    and network-based distances to FQHCs. For each group, the table provides the percentage of the
+                                    population with access to an FQHC within a 1-mile radius, for both Euclidean and network analyses.</p>
+                            </div>
+                            <h4 class="h3 mb-3">Key Findings:</h4>
+                            <section class="section3">
+                                <div class="container">
+                                    <div class="row"> <!-- Add this row to contain the columns side by side -->
+                                        <div class="item mapbox col-sm-6 col-md-4 col-lg-4 mb-4" data-aos="fade-up">
+                                            <a class="item-wrap fancybox">
+                                                <img class="img-fluid" src="assets/img/figure_one.png">
+                                            </a>
+                                            <p>Figure 1 shows that the locations of FQHCs appear to align with areas of 
+                                                high concentrations of single-female households in Connecticut. Most FQHCs 
+                                                are situated in or near densely populated areas where single-female households 
+                                                are more prevalent.</p>
+                                        </div>
+                                        <div class="item mapbox col-sm-6 col-md-4 col-lg-4 mb-4" data-aos="fade-up">
+                                          <a class="item-wrap fancybox">
+                                              <img class="img-fluid" src="assets/img/figure_two.png">
+                                          </a>
+                                          <p>Figure 2 illustrates that while there are a few highly concentrated areas with FQHCs, 
+                                            many of the centers are spread across regions with medium to smaller populations of 
+                                            individuals living below the poverty line, according to census tract data.</p>
+                                      </div>
+                                        <div class="item mapbox col-sm-6 col-md-4 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100"> <!-- Consider adding data-aos-delay for the second item to animate it separately -->
+                                            <a class="item-wrap fancybox">
+                                                <img class="img-fluid" src="assets/img/figure_three.png">
+                                            </a>
+                                            <p>
+                                                Figure 3, which displays 1-mile Euclidean buffers around the FQHCs, may give the impression 
+                                                that the centers are well distributed across the population and land area. However, 
+                                                Table 1 reveals that FQHCs are not as closely located to areas with higher concentrations of 
+                                                the foreign-born population.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                              <p> <h4 class="h3 mb-3">Summary:</h4> </p>
+                              <p>The analysis reveals that while visual representations, such as in Figure 1, suggest that FQHCs are well-distributed 
+                                among high populations of single-female households, the data in Table 1 tells a different story. The Euclidean distance 
+                                shows 43.3% of single-female households have access to FQHCs, while the networked distance is lower at 33.8%. A similar 
+                                pattern emerges in Figure 2, which appears to show good coverage for populations below the poverty line, but Table 1 shows 
+                                networked access at only 44.8%, with Euclidean distance slightly better at 53.9%. </p>
+                               <p>
+                                This highlights the importance of conducting both Euclidean and network analysis rather than relying solely on visual maps. 
+                                While Euclidean distance measures straight-line proximity, network analysis considers real-world barriers like road networks, 
+                                giving a more accurate picture of accessibility. The results show that, despite the visual maps suggesting widespread access, 
+                                structural barriers reduce actual access to FQHCs, especially for marginalized groups like foreign-born populations. For example, 
+                                only 42.1% of the foreign population has access to FQHCs via Euclidean distance, and just 32% through the network analysis. This 
+                                demonstrates the need for more comprehensive methods when allocating resources to vulnerable populations.
+                               </p>
+                            </div>
+                          </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+</main>
+
+
+
+  <!-- ======= Footer ======= -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <p class="mb-1">made by Florencia Gonzalez-Martinez</p>
+          <div class="credits">
+            <!--
+            All the links in the footer should remain intact.
+            You can delete the links only if you purchased the pro version.
+            Licensing information: https://bootstrapmade.com/license/
+            Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=MyPortfolio
+          -->
+            designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          </div>
+        </div>
+        <div class="col-sm-6 social text-md-end">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
